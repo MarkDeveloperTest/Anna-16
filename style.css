@@ -6,13 +6,43 @@ html, body {
 
 body {
   display: flex;
-  justify-content: center; /* horizontal centering */
-  align-items: center;    /* vertical centering */
+  justify-content: center;
+  align-items: center;
   background-color: #f0f0f0;
 }
 
-.centered-text {
-  font-size: 2rem;
-  color: #333;
+.container {
   text-align: center;
+}
+
+.question {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px; /* space between buttons */
+  justify-content: center;
+}
+
+.btn {
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn.blue {
+  background-color: #007bff;
+}
+
+.btn.red {
+  background-color: #dc3545;
+}
+
+.btn:hover {
+  opacity: 0.8;
 }
