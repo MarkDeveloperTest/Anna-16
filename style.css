@@ -11,6 +11,7 @@ body {
   background: linear-gradient(135deg, #f59edf, #9d7bff, #7ecbff);
   background-size: 300% 300%;
   animation: gradientMove 12s ease infinite;
+  padding: 10px; /* add padding to avoid content touching edges */
 }
 
 @keyframes gradientMove {
@@ -23,39 +24,45 @@ body {
   text-align: center;
   padding: 20px;
   opacity: 1;
+  transition: opacity 2s ease;
+  max-width: 100%; /* prevent overflowing on small screens */
 }
 
 .question {
   font-size: 2rem;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   color: white;
   text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+  word-wrap: break-word;
 }
 
 .question-small {
   font-size: 1.4rem;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   color: white;
   text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+  word-wrap: break-word;
 }
 
 .buttons {
   display: flex;
-  gap: 20px;
+  gap: 15px;
   justify-content: center;
+  flex-wrap: wrap; /* wrap buttons on small screens */
 }
 
 .lesson-images {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin-bottom: 20px;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap; /* wrap images if screen is too narrow */
 }
 
 .lesson-images img {
-  width: 150px;
-  height: 150px;
+  width: 120px; /* smaller on mobile */
+  height: 120px;
   object-fit: cover;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -65,44 +72,49 @@ body {
 .btn {
   display: inline-block;
   position: relative;
-  width: 150px;
-  height: 90px;
-  line-height: 90px;
+  width: 140px;
+  height: 80px;
+  line-height: 80px;
   text-align: center;
-  text-decoration: none;
+  text-decoration: none; /* <-- removes underlining */
   border: none;
   border-radius: 14px;
   cursor: pointer;
+  transition: 0.22s ease;
   color: white;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 700;
   text-shadow: 0 2px 6px rgba(0,0,0,0.7);
   overflow: hidden;
-  transition: 0.22s ease;
 }
 
+.btn span {
+  position: relative;
+  z-index: 2;
+}
+
+/* Glow animation for Yes/Так buttons */
+.btn.glow {
+  animation: ukGlow 2s infinite alternate;
+}
+
+@keyframes ukGlow {
+  0% { box-shadow: 0 0 15px rgba(0,128,255,0.6), 0 0 30px rgba(0,128,255,0.3); }
+  50% { box-shadow: 0 0 30px rgba(0,128,255,1), 0 0 60px rgba(0,128,255,0.5); }
+  100% { box-shadow: 0 0 15px rgba(0,128,255,0.6), 0 0 30px rgba(0,128,255,0.3); }
+}
+
+/* Flag backgrounds */
 .btn.blue {
-  background-color: #0057b7;
   background-image: url("https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg");
   background-size: cover;
   background-position: center;
 }
 
 .btn.red {
-  background-color: #dc3545;
   background-image: url("https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg");
   background-size: cover;
   background-position: center;
-}
-
-.btn.glow {
-  animation: ukGlow 2s infinite alternate;
-}
-
-@keyframes ukGlow {
-  0% { box-shadow: 0 0 20px rgba(0,128,255,0.6), 0 0 40px rgba(0,128,255,0.3); }
-  50% { box-shadow: 0 0 40px rgba(0,128,255,1), 0 0 80px rgba(0,128,255,0.5); }
-  100% { box-shadow: 0 0 20px rgba(0,128,255,0.6), 0 0 40px rgba(0,128,255,0.3); }
 }
 
 .btn:hover {
@@ -112,4 +124,24 @@ body {
 
 .btn:active {
   transform: scale(0.96);
+}
+
+/* Responsive for iPhones / small screens */
+@media (max-width: 500px) {
+  .question {
+    font-size: 1.6rem;
+  }
+  .question-small {
+    font-size: 1.2rem;
+  }
+  .lesson-images img {
+    width: 100px;
+    height: 100px;
+  }
+  .btn {
+    width: 120px;
+    height: 70px;
+    line-height: 70px;
+    font-size: 0.95rem;
+  }
 }
