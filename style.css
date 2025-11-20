@@ -4,11 +4,13 @@ html, body {
   font-family: Arial, sans-serif;
 }
 
+/* Soft diagonal gradient background */
 body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f59edf;
+
+  background: linear-gradient(135deg, #f59edf 0%, #ffb8ec 100%);
 }
 
 .container {
@@ -22,27 +24,46 @@ body {
 
 .buttons {
   display: flex;
-  gap: 20px; /* space between buttons */
+  gap: 20px;
   justify-content: center;
 }
 
+/* BEAUTIFUL BUTTONS */
 .btn {
-  padding: 12px 24px;
-  font-size: 1.2rem;
-  color: white;
+  padding: 14px 30px;
+  font-size: 1.1rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 14px;
+  color: white;
   cursor: pointer;
+  font-weight: 600;
+
+  transition: 
+    transform 0.2s ease,
+    box-shadow 0.25s ease,
+    opacity 0.2s ease;
+
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
+/* Button colors */
 .btn.blue {
-  background-color: #007bff;
+  background: linear-gradient(135deg, #0a84ff, #0066ff);
 }
 
 .btn.red {
-  background-color: #dc3545;
+  background: linear-gradient(135deg, #ff4a4a, #d82323);
 }
 
+/* Hover animation */
 .btn:hover {
-  opacity: 0.8;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.20);
+  opacity: 0.95;
+}
+
+/* Press animation */
+.btn:active {
+  transform: scale(0.96);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }

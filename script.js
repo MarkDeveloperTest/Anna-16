@@ -3,19 +3,17 @@ window.addEventListener('DOMContentLoaded', () => {
     if (window.Telegram?.WebApp) {
         Telegram.WebApp.ready();
         Telegram.WebApp.expand();
-    } else {
-        console.warn("Telegram WebApp is not available.");
     }
 
-    // Button actions
+    // Buttons
     const option1 = document.getElementById('option1');
     const option2 = document.getElementById('option2');
 
     option1.addEventListener('click', () => {
-        alert('You chose Option 1!');
+        console.log('Option 1 pressed');
     });
 
     option2.addEventListener('click', () => {
-        alert('You chose Option 2!');
+        console.log('Option 2 pressed');
     });
 });
