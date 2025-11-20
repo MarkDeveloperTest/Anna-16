@@ -4,7 +4,6 @@ html, body {
   font-family: "Inter", Arial, sans-serif;
 }
 
-/* Animated gradient background */
 body {
   display: flex;
   justify-content: center;
@@ -24,17 +23,19 @@ body {
   text-align: center;
   padding: 20px;
   opacity: 1;
-  transition: opacity 0.5s ease;
-}
-
-.container.fade-out {
-  opacity: 0;
 }
 
 .question {
   font-size: 2rem;
   font-weight: 600;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
+  color: white;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+.question-small {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
   color: white;
   text-shadow: 0 2px 5px rgba(0,0,0,0.4);
 }
@@ -45,67 +46,6 @@ body {
   justify-content: center;
 }
 
-/* FLAG BUTTONS */
-.btn {
-  position: relative;
-  width: 150px;
-  height: 90px;
-  border: none;
-  border-radius: 14px;
-  cursor: pointer;
-  transition: 0.22s ease;
-  background-size: cover;
-  background-position: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-  color: white;
-  font-size: 1.2rem;
-  font-weight: 700;
-  overflow: hidden;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
-}
-
-.btn span {
-  position: relative;
-  z-index: 2;
-}
-
-/* English button glow in UK colors */
-@keyframes ukGlow {
-  0% {
-    box-shadow: 0 0 20px #012169, 0 0 40px #C8102E33, 0 0 60px #FFFFFF22;
-  }
-  50% {
-    box-shadow: 0 0 40px #012169, 0 0 80px #C8102E55, 0 0 120px #FFFFFF44;
-  }
-  100% {
-    box-shadow: 0 0 20px #012169, 0 0 40px #C8102E33, 0 0 60px #FFFFFF22;
-  }
-}
-
-#yesLesson.btn.blue {
-  animation: ukGlow 2s infinite alternate;
-}
-
-/* UK / Ukrainian colors for initial buttons */
-.btn.blue {
-  background-image: url("https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg");
-}
-
-.btn.red {
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg");
-}
-
-/* Hover & active effects */
-.btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 22px rgba(0,0,0,0.35);
-}
-
-.btn:active {
-  transform: scale(0.96);
-}
-
-/* Lesson images */
 .lesson-images {
   display: flex;
   justify-content: center;
@@ -114,9 +54,62 @@ body {
 }
 
 .lesson-images img {
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  position: relative;
+  width: 150px;
+  height: 90px;
+  line-height: 90px;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+  overflow: hidden;
+  transition: 0.22s ease;
+}
+
+.btn.blue {
+  background-color: #0057b7;
+  background-image: url("https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg");
+  background-size: cover;
+  background-position: center;
+}
+
+.btn.red {
+  background-color: #dc3545;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg");
+  background-size: cover;
+  background-position: center;
+}
+
+.btn.glow {
+  animation: ukGlow 2s infinite alternate;
+}
+
+@keyframes ukGlow {
+  0% { box-shadow: 0 0 20px rgba(0,128,255,0.6), 0 0 40px rgba(0,128,255,0.3); }
+  50% { box-shadow: 0 0 40px rgba(0,128,255,1), 0 0 80px rgba(0,128,255,0.5); }
+  100% { box-shadow: 0 0 20px rgba(0,128,255,0.6), 0 0 40px rgba(0,128,255,0.3); }
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 22px rgba(0,0,0,0.35);
+}
+
+.btn:active {
+  transform: scale(0.96);
 }
