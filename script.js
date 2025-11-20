@@ -1,5 +1,4 @@
 window.addEventListener('DOMContentLoaded', () => {
-    // Telegram Mini App init
     if (window.Telegram?.WebApp) {
         Telegram.WebApp.ready();
         Telegram.WebApp.expand();
@@ -10,12 +9,22 @@ window.addEventListener('DOMContentLoaded', () => {
     const screen = document.getElementById('screen');
 
     function showLanguageScreen(name, flagURL) {
-        screen.innerHTML = `
-            <div id="language-screen">
-                <img src="${flagURL}" alt="${name} Flag">
-                <div>${name}</div>
-            </div>
-        `;
+        // fade out current screen
+        screen.classList.add('fade-out');
+
+        setTimeout(() => {
+            // replace content
+            screen.innerHTML = `
+                <div id="language-screen" class="show">
+                    <img src="${flagURL}" alt="${name} Flag">
+                    <div>${name}</div>
+                </div>
+            `;
+
+            // Remove fade-out from parent container
+            screen.classList.remove('fade-out');
+
+        }, 500); // match CSS fade-out duration
     }
 
     englishBtn.addEventListener('click', () => {
