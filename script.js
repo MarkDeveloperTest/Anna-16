@@ -1,19 +1,17 @@
-// Initialize Telegram Web App
 window.addEventListener('DOMContentLoaded', () => {
     if (window.Telegram?.WebApp) {
         Telegram.WebApp.ready();
         Telegram.WebApp.expand();
     }
 
-    // Buttons
-    const option1 = document.getElementById('option1');
-    const option2 = document.getElementById('option2');
+    const englishBtn = document.getElementById('english');
+    const ukrainianBtn = document.getElementById('ukrainian');
 
-    option1.addEventListener('click', () => {
-        console.log('Option 1 pressed');
+    englishBtn.addEventListener('click', () => {
+        Telegram.WebApp.sendData(JSON.stringify({ language: "English" }));
     });
 
-    option2.addEventListener('click', () => {
-        console.log('Option 2 pressed');
+    ukrainianBtn.addEventListener('click', () => {
+        Telegram.WebApp.sendData(JSON.stringify({ language: "Ukrainian" }));
     });
 });
