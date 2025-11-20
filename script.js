@@ -8,30 +8,67 @@ window.addEventListener('DOMContentLoaded', () => {
     const ukrainianBtn = document.getElementById('ukrainian');
     const screen = document.getElementById('screen');
 
-    function showLanguageScreen(name, flagURL) {
-        // fade out current screen
-        screen.classList.add('fade-out');
+    function fadeOut(element, callback) {
+        element.classList.add('fade-out');
+        setTimeout(callback, 500);
+    }
 
-        setTimeout(() => {
-            // replace content
-            screen.innerHTML = `
-                <div id="language-screen" class="show">
-                    <img src="${flagURL}" alt="${name} Flag">
-                    <div>${name}</div>
-                </div>
-            `;
+    function showLanguageScreen(name, flagURL, nextScreen = null) {
+        fadeOut(screen, () => {
+            if (nextScreen === 'ukrainian-options') {
+                screen.innerHTML = `
+                    <div class="lesson-images">
+                        <img src="screenshots/english_1.jpg" alt="Lesson 1">
+                        <img src="screenshots/english_2.jpg" alt="Lesson 2">
+                        <img src="screenshots/english_3.jpg" alt="Lesson 3">
+                    </div>
 
-            // Remove fade-out from parent container
+                    <div class="question">
+                        But I thought you were studying English!<br>
+                        Do you still want to continue?
+                    </div>
+                    <div class="buttons">
+                        <button id="yesLesson" class="btn blue"><span>Yes</span></button>
+                        <button id="noLesson" class="btn red"><span>No</span></button>
+                    </div>
+                `;
+
+                const yesBtn = document.getElementById('yesLesson');
+                const noBtn = document.getElementById('noLesson');
+
+                yesBtn.addEventListener('click', () => {
+                    alert('You chose to continue English lessons!');
+                });
+
+                noBtn.addEventListener('click', () => {
+                    alert('You chose not to continue English lessons.');
+                });
+
+            } else {
+                screen.innerHTML = `
+                    <div id="language-screen" class="show">
+                        <img src="${flagURL}" alt="${name} Flag" width="80" height="50">
+                        <div>${name}</div>
+                    </div>
+                `;
+            }
+
             screen.classList.remove('fade-out');
-
-        }, 500); // match CSS fade-out duration
+        });
     }
 
     englishBtn.addEventListener('click', () => {
-        showLanguageScreen('English', 'https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg');
+        showLanguageScreen(
+            'English',
+            'https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg'
+        );
     });
 
     ukrainianBtn.addEventListener('click', () => {
-        showLanguageScreen('Ukrainian', 'https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg');
+        showLanguageScreen(
+            'Ukrainian',
+            'https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg',
+            'ukrainian-options'
+        );
     });
 });
